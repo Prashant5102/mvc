@@ -1,0 +1,54 @@
+<?php
+$shippingMethod = $this->data['shippingMethod'];
+?>
+<!DOCTYPE html>
+<html>
+<head>
+	<meta charset="utf-8">
+	<meta name="viewport" content="width=device-width, initial-scale=1">
+	<title>edit shipping method</title>
+	<link rel="stylesheet" href="skin\css\header.css">
+	<link rel="stylesheet" href="skin\css\footer.css">
+	<link rel="stylesheet" href="skin\css\add.css">
+</head>
+<body>
+<?php $this->setTemplate('html/header.phtml')->render();?>
+
+
+<form action="<?php echo $this->getUrl('save')?>" method="post">
+
+	<div class="body1">shipping method
+		<button class="button1" type="submit">SAVE</button>
+		<button class="button1"><a href="<?php echo $this->getUrl('grid')?>">CANCEL</a></button>
+	</div>
+
+		<div class="body">
+			<table class="t1">
+				<tr>	
+					<input type="hidden" name="shippingMethod[shipping_method_id]" value="<?php echo $shippingMethod->shipping_method_id; ?>">
+				</tr>
+			
+				<tr>
+					<td>name: </td>
+					<td><input type="float" name="shippingMethod[name]" value="<?php echo $shippingMethod->name; ?>"></td>
+				</tr>
+				<tr>	
+					<td>amount: </td>
+					<td><input type="float" name="shippingMethod[amount]" value="<?php echo $shippingMethod->amount; ?>"></td>
+				</tr>
+				<tr>
+					<td>status: </td>
+					<td>
+						<select name="shippingMethod[status]">
+							<option value="<?php echo $shippingMethod->status;?>"><?php echo $shippingMethod->status;?></option>
+							<option value="active">Active</option>
+							<option value="inactive">InActive</option>
+						</select>
+					</td>
+				</tr>
+			</table>
+		</div>
+</form>
+
+</body>
+</html>

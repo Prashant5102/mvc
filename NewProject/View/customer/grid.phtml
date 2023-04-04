@@ -1,0 +1,60 @@
+<?php
+$customers = $this->data['customers'];
+?>
+<!DOCTYPE html>
+<html>
+<head>
+	<meta charset="utf-8">
+	<meta name="viewport" content="width=device-width, initial-scale=1">
+	<title>customer grid</title>
+	<link rel="stylesheet" href="skin\css\header.css">
+	<link rel="stylesheet" href="skin\css\footer.css">
+	<link rel="stylesheet" href="skin\css\grid.css">
+</head>
+<body>
+<div class="content">
+	<?php $this->setTemplate('html/header.phtml')->render();?>
+
+	<div class="body1">
+		MANAGE CUSTOMERS
+		<button class="button1"><a href="<?php echo $this->getUrl('add');?>">Add Customer</a></button>
+	</div>
+    <table class="t1">
+				<tr>
+					<th>customer_id</th>
+					<th>first_name</th>
+					<th>last_name</th>
+					<th>email</th>
+					<th>mobile</th>
+					<th>gender</th>
+					<th>status</th>
+					<th>view address</th>
+					<th>Edit</th>
+					<th>Delete</th>
+				</tr>
+
+				<?php
+				foreach($customers as $customer){
+				?>
+				<tr>
+					<td><?php echo $customer->customer_id;?></td>
+					<td><?php echo $customer->first_name;?></td>
+					<td><?php echo $customer->last_name;?></td>
+					<td><?php echo $customer->email;?></td>
+					<td><?php echo $customer->mobile;?></td>
+					<td><?php echo $customer->gender;?></td>
+					<td><?php echo $customer->getStatusText();?></td>
+					<td><a href="<?php echo $this->getUrl('edit', null, ['id'=> $customer->customer_id], true);?>">view address</a></td>
+					<td><a href="<?php echo $this->getUrl('edit', null, ['id'=> $customer->customer_id], true);?>">Edit</a></td>
+					<td><a href="<?php echo $this->getUrl('delete', null, ['id'=> $customer->customer_id], true);?>">Delete</td>
+				</tr>
+				<?php
+				}
+				?>
+	</table>
+	</div>
+</div>
+<?php $this->setTemplate('html/footer.phtml')->render();?>
+
+</body>
+</html>

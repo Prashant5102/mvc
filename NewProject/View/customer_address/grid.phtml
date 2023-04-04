@@ -1,0 +1,44 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<meta charset="utf-8">
+	<meta name="viewport" content="width=device-width, initial-scale=1">
+	<title></title>
+	<style type="text/css">
+		body{
+			margin-top: 50px;
+		}
+	</style>
+</head>
+<body>
+	<table border="1px" width="100%">
+	<tr>
+		<th>Address_id</th>
+		<th>Address</th>
+		<th>City</th>
+		<th>State</th>
+		<th>Country</th>
+		<th>Zipcode</th>
+		<th>Customer_id</th>
+		<th>Edit</th>
+	</tr>
+       <?php foreach ($address as $customerAdd){ ?>
+	<tr>
+		<td><?php echo $customerAdd['address_id'];?></td>
+		<td><?php echo $customerAdd['address'];?></td>
+		<td><?php echo $customerAdd['city'];?></td>
+		<td><?php echo $customerAdd['state'];?></td>
+		<td><?php echo $customerAdd['country'];?></td>
+		<td><?php echo $customerAdd['zip_code'];?></td>
+		<td><?php echo $customerAdd['customer_id'];?></td>
+		<td><a href="index.php?a=edit&c=customeraddress&address_id=<?php echo $customerAdd['address_id'];?>">Edit</td>
+	</tr>
+		
+		<?php
+		}
+		?>
+	</table>
+
+</body>
+<?php require_once'C:\xampp\htdocs\NewProject\View\html\footer.phtml'; ?>
+</html>

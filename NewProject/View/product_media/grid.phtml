@@ -1,0 +1,104 @@
+<?php
+$medias = $this->data['medias'];
+?>
+<!DOCTYPE html>
+<html>
+<head>
+	<title>Media</title>
+	<link rel="stylesheet" type="text/css" href="Skin/css/header.css">
+	<link rel="stylesheet" type="text/css" href="Skin/css/footer.css">
+	<link rel="stylesheet" type="text/css" href="Skin/css/grid.css">
+</head>
+<body>
+	<?php $this->setTemplate('html/header.phtml')->render();?>
+	<?php $this->setTemplate('html/message.phtml')->render();?>
+	<div class="body">
+		<div class="box"><b>Media Grid</b></div>
+		<div class="link">
+			<button><a href="<?php echo $this->getUrl('grid', 'product', [], true);?>">Go Back</a></button>
+		</div>
+		<div class="submit">
+			<button>
+				<a href="<?php echo $this->getUrl('add', null, ['product_id' => Ccc::getModel('Core_Request')->getParam('id')], true);?>">Add Media</a>
+			</button>
+		</div>
+		
+	</div>
+	<form action="<?php echo $this->getUrl('operation', null, ['product_id' => Ccc::getModel('Core_Request')->getParam('id')]);?>" method="post">
+		<div class="update">
+			<button type="submit" name="update" value="update">Update</button>
+			<button type="submit" name="deleted" value="delete">Delete</button>
+		</div>
+		<div>
+			<table cellpadding="25%" border="1px">
+				<tr>
+					<th>Media ID</th>
+					<th>Name</th>
+					<th>Image</th>
+					<th>Status</th>
+					<th>Base</th>
+					<th>Small</th>
+					<th>Thumbnail</th>
+					<th>Gallery</th>
+					<th>Created At</th>
+					<th>DELETE</th>
+				</tr>
+				<?php foreach ($medias as $media) : ?>
+				<tr>
+					<td><?php echo $media->media_id; ?></td>
+					<td><?php echo $media->name; ?></td>
+					<td style="width: 300px; height: 300px;">
+						<img src="Images/<?php echo $media->name;?>.jpeg" style="width: 100%; height: 100%; object-fit: cover;">
+					</td>
+					<td>
+					<?php 
+	                	if ($media->status == Model_Product_Media_Row::STATUS_ACTIVE) {
+	                    	echo Model_Product_Media_Row::STATUS_ACTIVE_LBL;
+	                	} else {
+	                    	echo Model_Product_Media_Row::STATUS_INACTIVE_LBL;
+	               		}
+					?>
+					</td>
+					<td>
+						<input type="radio" name="base" value="<?php echo $media->media_id; ?>"
+						<?php
+							if ($media->base == 1) {
+								echo "checked";
+							}
+						?>>
+					</td>
+					<td>
+						<input type="radio" name="small" value="<?php echo $media->media_id; ?>"
+						<?php
+							if ($media->small == 1) {
+								echo "checked";
+							}
+						?>>
+					</td>
+					<td>
+						<input type="radio" name="thumbnail" value="<?php echo $media->media_id; ?>"
+						<?php
+							if ($media->thumbnail == 1) {
+								echo "checked";
+							}
+						?>>
+					</td>
+					<td>
+						<input type="checkbox" name="gallerys[]" value="<?php echo $media->media_id; ?>"
+						<?php
+							if ($media->gallery == 1) {
+								echo "checked";
+							}
+						?>>
+					</td>
+					<td><?php echo $media->created_at;?></td>
+					<td>
+						<input type="checkbox" name="delete[]" value="<?php echo $media->media_id; ?>">
+					</td>
+				</tr>
+			<?php endforeach; ?>
+			</table>
+		</div>
+	</form>
+</body>
+</html>

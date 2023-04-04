@@ -1,0 +1,19 @@
+.body1{
+    padding: 20px 10px;
+    font-size: 40px;
+    margin-top: 10px;
+    background-color: lightgray;
+	}
+.button1{
+	float: right;
+}
+
+.t1{
+	width: 50%;
+	margin-top: 10px;
+}
+table,th,td{
+	border: 1px solid black;
+}
+
+tr:nth-child(even){background-color: lightgray;}

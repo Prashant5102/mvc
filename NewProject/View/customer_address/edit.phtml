@@ -1,0 +1,47 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<meta charset="utf-8">
+	<meta name="viewport" content="width=device-width, initial-scale=1">
+	<title></title>
+</head>
+<body>
+	<form action="index.php?a=update&c=customeraddress" method="POST">
+		<table width="20%">
+			<tr>
+				<td><h2>Edit CustomerAddress</h2></td>
+				<td><button>SAVE</button></td>
+			</tr>
+		</table>
+		<table>
+			<tr>
+				<input type="hidden" name="customerAdd[address_id]" value="<?php echo $address['address_id']; ?>">
+			</tr>
+			<tr>
+				<td>Address :</td>
+				<td><input type="text" name="customerAdd[address]" value="<?php echo $address['address']; ?>"></td>
+			</tr>
+			<tr>
+				<td>City :</td>
+				<td><input type="text" name="customerAdd[city]" value="<?php echo $address['city']; ?>"></td>
+			</tr>
+			<tr>
+				<td>State :</td>
+				<td><input type="text" name="customerAdd[state]" value="<?php echo $address['state']; ?>"></td>
+			</tr>
+			<tr>
+				<td>Country :</td>
+				<td><input type="text" name="customerAdd[country]" value="<?php echo $address['country']; ?>"></td>
+			</tr>
+			<tr>
+				<td>Zipcode :</td>
+				<td><input type="text" name="customerAdd[zip_code]" value="<?php echo $address['zip_code']; ?>"></td>
+			</tr>
+			<tr>
+				<td>Customer_id :</td>
+				<td><input type="text" name="customerAdd[customer_id]" value="<?php echo $address['customer_id']; ?>"></td>
+			</tr>
+		</table>
+	</form>
+</body>
+</html>

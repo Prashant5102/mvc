@@ -1,0 +1,45 @@
+<?php
+$paymentMethod = $this->data['paymentMethod'];
+?>
+<!DOCTYPE html>
+<html>
+<head>
+	<meta charset="utf-8">
+	<meta name="viewport" content="width=device-width, initial-scale=1">
+	<title>edit payment method</title>
+	<link rel="stylesheet" href="skin\css\header.css">
+	<link rel="stylesheet" href="skin\css\footer.css">
+	<link rel="stylesheet" href="skin\css\add.css">
+</head>
+<body>
+<?php $this->setTemplate('html/header.phtml')->render();?>
+
+<form action="<?php echo $this->getUrl('save')?>" method="post">
+
+	<div class="body1">payment method
+		<button class="button1" type="submit">SAVE</button>
+		<button class="button1"><a href="<?php echo $this->getUrl('grid')?>">CANCEL</a></button>
+	</div>
+
+		<div>
+			<table class="t1">
+				<tr>
+					<td>name: </td>
+					<td><input type="float" name="paymentMethod[name]" value="<?php echo $paymentMethod->name;?>"></td>
+				</tr>
+				<tr>
+					<td>status: </td>
+					<td>
+						<select name="paymentMethod[status]">
+							<option value="<?php echo $paymentMethod->status;?>"><?php echo $paymentMethod->status;?></option>
+							<option value="active">Active</option>
+							<option value="inactive">InActive</option>
+						</select>
+					</td>
+				</tr>
+			</table>
+		</div>
+</form>
+
+</body>
+</html>

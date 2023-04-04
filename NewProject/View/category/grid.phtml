@@ -1,0 +1,58 @@
+<?php
+$categories = $this->data['categories'];
+?>
+<!DOCTYPE html>
+<html>
+<head>
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>category grid</title>
+<link rel="stylesheet" href="skin\css\header.css">
+<link rel="stylesheet" href="skin\css\footer.css">
+<link rel="stylesheet" href="skin\css\grid.css">
+</head>
+<body>
+
+<div class="content">
+	<?php $this->setTemplate('html/header.phtml')->render();?>
+	
+	
+	<div class="body1">
+			MANAGE CATEGORY
+			<button class="button1" type="button" ><a href="index.php?a=add&c=category">ADD CATEGORY</a></button>
+		</div>
+
+	<table>
+		<tr>
+			<th>Category_id</th>
+			<th>Name</th>
+			<th>Status</th>
+			<th>Description</th>
+			<th>Created At</th>
+			<th>Updated At</th>
+			<th>Edit</th>
+			<th>Delete</th>
+		</tr>
+
+		<?php
+		foreach($categories as $category){
+		?>
+		<tr>
+	        <td><?php echo $category->category_id;?></td>
+	        <td><?php echo $category->name;?></td>
+			<td><?php echo $category->getStatusText();?></td>
+			<td><?php echo $category->description;?></td>
+			<td><?php echo $category->created_at;?></td>
+			<td><?php echo $category->updated_at;?></td>
+			<td><a href="<?php echo $this->getUrl('edit', null, ['id'=> $category->category_id], true);?>">Edit</a></td>
+			<td><a href="<?php echo $this->getUrl('delete', null, ['id'=> $category->category_id], true);?>">Delete</td>
+		</tr>
+		<?php
+		}
+		?>
+	</table>
+		  
+</div>
+<?php $this->setTemplate('html/footer.phtml')->render();?>
+
+</body>
+</html>

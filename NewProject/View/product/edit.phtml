@@ -1,0 +1,90 @@
+<?php
+$product = $this->data['product'];
+?>
+<!DOCTYPE html>
+<html>
+<head>
+	<meta charset="utf-8">
+	<meta name="viewport" content="width=device-width, initial-scale=1">
+	<title>Edit Product</title>
+	<link rel="stylesheet" href="skin\css\header.css">
+	<link rel="stylesheet" href="skin\css\footer.css">
+	<link rel="stylesheet" href="skin\css\add.css">
+</head>
+<body>
+	<?php $this->setTemplate('html/header.phtml')->render();?>
+
+	
+	<form action="<?php echo $this->getUrl('save')?>" method="post">
+	<div class="body">
+		<div class="body1">
+			EDIT PRODUCTS
+			<button class="button1"><a href="<?php echo $this->getUrl('grid')?>">CANCEL</a></button>
+			<button class="button1" type="submit">SAVE</button>
+		</div>
+		<div class="dt1">
+			<table class="t1">
+				<tr>
+					<th colspan="2"> Product Information</th>
+				</tr>
+				<tr>	
+					<td>NAME: </td>
+					<td><input type="text" name="product[name]" value="<?php echo $product->name;?>"></td>
+				</tr>
+				<tr>	
+					<td>PRICE: </td>
+					<td><input type="float" name="product[price]" value="<?php echo $product->price;?>"></td>
+				</tr>
+				<tr>	
+					<td>COST: </td>
+					<td><input type="float" name="product[cost]" value="<?php echo $product->cost;?>"></td>
+				</tr>
+				<tr>	
+					<td>Sku: </td>
+					<td><input type="text" name="product[sku]" value="<?php echo $product->sku;?>"></td>
+				</tr>
+				<tr>	
+					<td>QUANTITY: </td>
+					<td><input type="int" name="product[quantity]" value="<?php echo $product->quantity;?>"></td>
+				</tr>
+				<tr>	
+					<td>DESCRIPTION: </td>
+					<td><textarea name="product[description]"  ><?php echo $product->description;?></textarea></td>
+				</tr>
+				<tr>	
+					<td>STATUS: </td>
+					<td>
+						<select name="product[status]">
+							<option value="<?php echo $product->status;?>"><?php echo $product->getStatusText();?></option>
+							<option value="active">Active</option>
+							<option value="inactive">InActive</option>
+						</select>
+					</td>
+				</tr>
+				<tr>	
+					<td>COLOR: </td>
+					<td>
+						<select name="product[color]">
+							<option value="<?php echo $product->color;?>"><?php echo $product->color;?></option>
+							<option value="red">Red</option>
+							<option value="blue">Blue</option>
+						</select>
+					</td>
+				</tr>
+				<tr>	
+					<td>MATERIAL: </td>
+					<td>
+						<select name="product[material]">
+							<option value="<?php echo $product->material;?>"><?php echo $product->material;?></option>
+							<option value="metal">Metal</option>
+							<option value="plastic">Plastic</option>
+						</select>
+					</td>
+				</tr>
+			</table>
+		</div>
+		</form>
+</div>
+
+</body>
+</html>

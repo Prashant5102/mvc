@@ -1,0 +1,29 @@
+content{ 
+  margin: 10px;
+}
+
+.body1{
+	background-color: lightgray;
+	padding: 5px;
+	margin-top: 2px;
+}
+
+.content{
+			height: 600px;
+			margin: 5px;
+}
+
+
+table,th,td{
+	border: 1px solid black;
+	text-align: center;
+}
+
+table{
+	width: 100%;
+}
+td{
+	text-align: center;
+}
+
+tr:nth-child(odd){background-color: lightgray;}

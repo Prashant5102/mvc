@@ -1,0 +1,56 @@
+<?php
+$shippingMethods = $this->data['shippingMethods'];
+?>
+<!DOCTYPE html>
+<html>
+<head>
+	<meta charset="utf-8">
+	<meta name="viewport" content="width=device-width, initial-scale=1">
+	<title>shipping method grid</title>
+	<link rel="stylesheet" href="skin\css\header.css">
+	<link rel="stylesheet" href="skin\css\footer.css">
+	<link rel="stylesheet" href="skin\css\grid.css">
+</head>
+<body>
+<div class="content">
+	<?php $this->setTemplate('html/header.phtml')->render();?>
+
+	<div class="body1">
+		MANAGE SHIPPING METHOD
+		<button class="button1"><a href="<?php echo $this->getUrl('add')?>">Add Shipping Method</a></button>
+	</div>
+    <table class="t1">
+		<tr>
+			<th>shipping_method_id</th>
+			<th>name</th>
+			<th>amount</th>
+			<th>status</th>
+			<th>created_at</th>
+			<th>updated_at</th>
+			<th>Edit</th>
+			<th>Delete</th>
+		</tr>
+
+		<?php
+		foreach($shippingMethods as $shippingMethod){
+		?>
+		<tr>
+			<td><?php echo $shippingMethod->shipping_method_id;?></td>
+			<td><?php echo $shippingMethod->name;?></td>
+			<td><?php echo $shippingMethod->amount;?></td>
+			<td><?php echo $shippingMethod->getStatusText();?></td>
+			<td><?php echo $shippingMethod->created_at;?></td>
+			<td><?php echo $shippingMethod->updated_at;?></td>
+			<td><a href="<?php echo $this->getUrl('edit', null, ['id'=> $shippingMethod->shipping_method_id], true);?>">Edit</a></td>
+			<td><a href="<?php echo $this->getUrl('delete', null, ['id'=> $shippingMethod->shipping_method_id], true);?>">Delete</td>
+		</tr>
+		<?php
+		}
+		?>
+	</table>
+	</div>
+</div>
+<?php $this->setTemplate('html/footer.phtml')->render();?>
+
+</body>
+</html>

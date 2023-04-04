@@ -1,0 +1,52 @@
+<?php
+$product_id = $this->getMediaModel()->getProductId();
+?>
+
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Media Add</title>
+</head>
+
+<body>
+    <h1>
+        Add The Media
+    </h1>
+    <div>
+
+
+        <form action="<?php echo $this->getUrlModel()->getUrl("insert") ?>" method="post" enctype="multipart/form-data">
+            <div>
+                <label> Name: </label>
+                <input name="media[name]" type="text" placeholder="Enter the name of the product..." />
+            </div>
+
+
+            <div class="mb-4">
+                <label> Select the image: </label>
+                <input name="media[image]" type="file" placeholder="Select the image..." />
+            </div>
+
+
+            <div >
+                <button>
+                    <a href="<?php echo $this->getUrlModel()->getUrl("grid")?>">
+                        CENCLE
+                    </a>
+                </button>
+                <button type="submit">
+                    SUBMIT
+                </button>
+            </div>
+
+        </form>
+    </div>
+
+    <?php require_once('View/html/footer.phtml'); ?>
+
+</body>
+
+</html>

@@ -1,0 +1,77 @@
+<?php
+$salesman = $this->data['salesman'];
+?>
+<!DOCTYPE html>
+<html>
+<head>
+	<meta charset="utf-8">
+	<meta name="viewport" content="width=device-width, initial-scale=1">
+	<title>edit salesman</title>
+	<link rel="stylesheet" href="skin\css\header.css">
+	<link rel="stylesheet" href="skin\css\footer.css">
+	<link rel="stylesheet" href="skin\css\add.css">
+</head>
+<body>
+<?php $this->setTemplate('html/header.phtml')->render();?>
+
+
+<form action="<?php echo $this->getUrl('save')?>" method="post">
+
+	<div class="body">Edit Salesman
+		<button class="button1" type="submit">SAVE</button>
+		<button class="button1"><a href="<?php echo $this->getUrl('grid')?>">CANCEL</a></button>
+		<div class="body1">
+			<table class="t1">
+				
+				<tr>	
+					<input type="hidden" name="salesman[salesman_id]" value="<?php echo $salesman->salesman_id; ?>">
+				</tr>
+				<tr>	
+					<td>fist_name: </td>
+					<td><input type="text" name="salesman[first_name]" value="<?php echo $salesman->first_name; ?>"></td>
+				</tr>
+				<tr>	
+					<td>last_name: </td>
+					<td><input type="text" name="salesman[last_name]" value="<?php echo $salesman->last_name; ?>"></td>
+				</tr>
+				<tr>	
+					<td>email: </td>
+					<td><input type="email" name="salesman[email]" value="<?php echo $salesman->email; ?>"></td>
+				</tr>
+				<tr>	
+					<td>mobile: </td>
+					<td><input type="int" name="salesman[mobile]" value="<?php echo $salesman->mobile; ?>"></td>
+				</tr>
+				<tr>
+					<td>gender: </td>
+					<td>
+						<select name="salesman[gender]">
+							<option value="<?php echo $salesman->gender;?>"><?php echo $salesman->gender;?></option>
+							<option value="male">Male</option>
+							<option value="female">Female</option>
+							<option value="other">Other</option>
+						</select>
+					</td>
+				</tr>
+				<tr>
+					<td>status: </td>
+					<td>
+						<select name="salesman[status]">
+							<option value="<?php echo $salesman->status;?>"><?php echo $salesman->status;?></option>
+							<option value="active">Active</option>
+							<option value="inactive">InActive</option>
+						</select>
+					</td>
+				</tr>
+				<tr>	
+				<td>company: </td>
+				<td><input type=text name="salesman[company]" value="<?php echo $salesman->company;?>"></td>
+			</tr>
+			
+		</table>
+		</div>
+	</div>
+</form>
+
+</body>
+</html>
